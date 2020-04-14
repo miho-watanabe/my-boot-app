@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.12.2.final using JasperReports Library version 6.12.2-75c5e90a222ab406e416cbf590a5397028a52de3  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Blank_A4" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="9eec4c9d-e015-496a-959f-95b5f219696a">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<parameter name="Date_today" class="java.lang.String"/>
+	<parameter name="Client_name" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="product_name" class="java.lang.String"/>
+	<field name="price" class="java.lang.Integer"/>
+	<variable name="product_name1" class="java.lang.Integer" resetType="Page" calculation="Count">
+		<variableExpression><![CDATA[$F{product_name}]]></variableExpression>
+	</variable>
+	<variable name="price1" class="java.lang.Integer" resetType="Page" calculation="Count">
+		<variableExpression><![CDATA[$F{price}]]></variableExpression>
+	</variable>
+	<variable name="product_name2" class="java.lang.Integer" resetType="Page" calculation="DistinctCount">
+		<variableExpression><![CDATA[$F{product_name}]]></variableExpression>
+	</variable>
+	<variable name="price2" class="java.lang.Integer" resetType="Page" calculation="DistinctCount">
+		<variableExpression><![CDATA[$F{price}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="88" splitType="Stretch">
+			<textField>
+				<reportElement x="200" y="0" width="162" height="30" uuid="24c14a3c-d342-4c3e-a091-f476202a2806"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA["商品一覧表"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="10" y="50" width="100" height="30" uuid="80d7784c-882f-462f-bb52-9f79859c0496"/>
+				<textElement>
+					<font fontName="IPAexg"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{Client_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="450" y="50" width="100" height="30" uuid="ac85d7fa-30e3-4b13-98b1-3c883e90f028"/>
+				<textElement>
+					<font fontName="IPAexg"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{Date_today}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="91" splitType="Stretch">
+			<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.HorizontalRowLayout"/>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="43" splitType="Stretch">
+			<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.grid.JSSGridBagLayout"/>
+			<staticText>
+				<reportElement x="0" y="0" width="278" height="43" uuid="c7adc3a1-9245-4953-a404-6a41779260a6"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="IPAexg"/>
+				</textElement>
+				<text><![CDATA[商品名]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="278" y="0" width="277" height="43" uuid="9fdee941-2772-4b07-9c78-ba61f732be14"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="IPAexg"/>
+				</textElement>
+				<text><![CDATA[価格]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="278" height="30" uuid="44d12e32-5c75-4b83-a9a4-6040766e6daf">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="75d7a781-aeae-480a-9af0-56632e393f89"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="IPAexg"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{product_name}]]></textFieldExpression>
+			</textField>
+			<textField pattern="¤#,##0.##;¤-#,##0.##">
+				<reportElement x="278" y="0" width="277" height="30" uuid="cf3b8336-b878-4ad5-94e7-1007b53b00c3">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="78f137fb-42a1-4225-bea8-12ecf6d6e8c9"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="IPAexg"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{price}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
