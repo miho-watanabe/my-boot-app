@@ -38,7 +38,7 @@ public class ProductController {
 
 		// ヘッダーデータ作成
 		params.put("Client_name", "ライフ");
-		params.put("Date_today", "令和2年4月14日");
+		params.put("Date_today", "令和2年4月24日");
 
 		// フィールドデータ作成
 		SampleProductDao dao = new SampleProductDao();
