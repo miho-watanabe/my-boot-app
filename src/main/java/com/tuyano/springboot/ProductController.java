@@ -36,6 +36,9 @@ public class ProductController {
 	@RequestMapping(value = "/sample", method = RequestMethod.GET)
 	public String sample(HttpServletResponse response) {
 
+		Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
+		
+		logger.log(Level.INFO,"スタート");
 		// データ作成
 		HashMap<String, Object> params = new HashMap<String, Object>();
 
@@ -47,9 +50,13 @@ public class ProductController {
 		SampleProductDao dao = new SampleProductDao();
 		List<SampleProductModel> fields = dao.findByAll();
 
+		logger.log(Level.INFO,fields.toString());
+		
 		// データを検索し、帳票を出力
 		byte[] output = OrderReporting2(params, fields);
 
+		logger.log(Level.INFO,"出力");
+		
 		// PDFのダウンロード
 		// バイナリファイルの型指定
 		response.setContentType("application/octet-stream");
