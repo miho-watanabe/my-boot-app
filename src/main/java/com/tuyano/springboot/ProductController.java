@@ -1,5 +1,7 @@
 package com.tuyano.springboot;
 
+import java.io.BufferedInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -23,7 +25,8 @@ import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
-
+import java.util.logging.Level;
+import java.util.logging.Logger;
 @Controller
 public class ProductController {
 
@@ -79,12 +82,25 @@ public class ProductController {
 		// バイトを読み込む為のクラス
 		InputStream input;
 
+		Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
+
+		
 		try {
 			// 帳票ファイルを取得
-			//　フルパスに変更
-			// リトライ
 			input = new FileInputStream(resource.getResource("/app/target/classes/report/Blank_A4.jrxml").getFile());
-			// リストをフィールドのデータソースに
+			
+			BufferedInputStream bis = new BufferedInputStream(input);
+			ByteArrayOutputStream buf = new ByteArrayOutputStream();
+			int result = bis.read();
+			while(result != -1) {
+			    buf.write((byte) result);
+			    result = bis.read();
+			}
+			// StandardCharsets.UTF_8.name() > JDK 7
+			
+			logger.log(Level.INFO,buf.toString("UTF-8"));
+			
+			//リストをフィールドのデータソースに
 			JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(data);
 			// 帳票をコンパイル
 			JasperReport jasperReport = JasperCompileManager.compileReport(input);
@@ -97,12 +113,11 @@ public class ProductController {
 			// 帳票をByte形式で出力
 			return JasperExportManager.exportReportToPdf(jasperPrint);
 
-		} catch (FileNotFoundException e) {
-			// TODO 自動生成された catch ブロック
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO 自動生成された catch ブロック
-			e.printStackTrace();
+			
+			  } catch (FileNotFoundException e) { // TODO 自動生成された catch ブロック
+			  e.printStackTrace(); } catch (IOException e) { // TODO 自動生成された catch ブロック
+			  e.printStackTrace();
+			 
 		} catch (JRException e) {
 			// TODO 自動生成された catch ブロック
 			e.printStackTrace();
