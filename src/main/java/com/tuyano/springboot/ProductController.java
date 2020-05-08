@@ -93,8 +93,8 @@ public class ProductController {
 		
 		try {
 			// 帳票ファイルを取得
-			//input = new FileInputStream(resource.getResource("/app/target/classes/report/Blank_A4.jrxml").getFile());
-			input = getClass().getClassLoader().getSystemResourceAsStream("Blank_A4.jrxml");
+			input = new FileInputStream(resource.getResource("file:/app/target/classes/report/Blank_A4.jrxml").getFile());
+			//input = ClassLoader.getSystemResourceAsStream("Blank_A4.jrxml");
 			
 			BufferedInputStream bis = new BufferedInputStream(input);
 			ByteArrayOutputStream buf = new ByteArrayOutputStream();
