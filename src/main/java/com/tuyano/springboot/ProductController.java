@@ -63,7 +63,7 @@ public class ProductController {
 		// ダウンロード時のファイル名
 		response.setHeader("Content-Disposition", "attachment; filename=" + "sample.pdf");
 		// ダウンロードされるファイルの大きさ
-		//response.setContentLength(output.length);
+		response.setContentLength(output.length);
 
 		OutputStream os = null;
 		try {
@@ -90,11 +90,11 @@ public class ProductController {
 		InputStream input;
 
 		Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
-
 		
 		try {
 			// 帳票ファイルを取得
-			input = new FileInputStream(resource.getResource("/app/target/classes/report/Blank_A4.jrxml").getFile());
+			//input = new FileInputStream(resource.getResource("/app/target/classes/report/Blank_A4.jrxml").getFile());
+			input = getClass().getClassLoader().getSystemResourceAsStream("Blank_A4.jrxml");
 			
 			BufferedInputStream bis = new BufferedInputStream(input);
 			ByteArrayOutputStream buf = new ByteArrayOutputStream();
