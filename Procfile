@@ -1,1 +1,1 @@
-web: vendor/bin/heroku-php-apache2
+web: java $JAVA_OPTS -jar target/*.jar --server.port=$PORT
