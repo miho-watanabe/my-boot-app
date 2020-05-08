@@ -81,6 +81,7 @@ public class ProductController {
 
 		try {
 			// 帳票ファイルを取得
+			//　フルパスに変更
 			input = new FileInputStream(resource.getResource("/app/target/classes/report/Blank_A4.jrxml").getFile());
 			// リストをフィールドのデータソースに
 			JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(data);
