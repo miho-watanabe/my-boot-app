@@ -63,7 +63,7 @@ public class ProductController {
 		// ダウンロード時のファイル名
 		response.setHeader("Content-Disposition", "attachment; filename=" + "sample.pdf");
 		// ダウンロードされるファイルの大きさ
-		response.setContentLength(output.length);
+		//response.setContentLength(output.length);
 
 		OutputStream os = null;
 		try {
