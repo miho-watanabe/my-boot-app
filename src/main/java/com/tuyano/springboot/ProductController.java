@@ -38,7 +38,7 @@ public class ProductController {
 
 		Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 		
-		logger.log(Level.INFO,"スタート");
+		System.out.println("スタート");
 		// データ作成
 		HashMap<String, Object> params = new HashMap<String, Object>();
 
