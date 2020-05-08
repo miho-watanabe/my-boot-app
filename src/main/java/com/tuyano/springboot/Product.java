@@ -2,6 +2,7 @@ package com.tuyano.springboot;
 
 import lombok.Data;
 
+//　商品名、価格
 @Data
 public class Product {
 
