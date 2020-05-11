@@ -8,15 +8,12 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @Transactional
-public class ProductService {
+public class SalesforceDepartmentService {
 
 	@Autowired
-	ProductRepository repository;
-
+	SalesforceDepartmentRepository salesforceRepository;
 	
-	  public List<Product> findAll(){
-		  return repository.findAll();
+	  public List<SalesforceDepartment> sfFindAll(){
+		  return salesforceRepository.findAll();
 	  }
-
-	
 }

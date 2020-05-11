@@ -36,6 +36,8 @@ public class ProductController {
 	ResourceLoader resource;
 	@Autowired
 	ProductService service;
+	@Autowired
+	SalesforceDepartmentService sfService;
 	
 	@Autowired
 	@Qualifier("myfile")
@@ -44,27 +46,19 @@ public class ProductController {
 	@RequestMapping(value = "/sample", method = RequestMethod.GET)
 	public String sample(HttpServletResponse response) {
 
-		Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
-		
-		System.out.println("スタート");
-		// データ作成
 		HashMap<String, Object> params = new HashMap<String, Object>();
 
 		// ヘッダーデータ作成
-		params.put("Client_name", "ライフ");
+		List<SalesforceDepartment>test = sfService.sfFindAll();
+		params.put("Client_name", test.get(0).getName());
 		params.put("Date_today", "令和2年4月24日");
-
-		// フィールドデータ作成
-		//SampleProductDao dao = new SampleProductDao();
-		//List<SampleProductModel> fields = dao.findByAll();
-		List<Product>fields = service.findAll();
 		
-		logger.log(Level.INFO,fields.toString());
+		
+		// フィールドデータ作成
+		List<Product>fields = service.findAll();
 		
 		// データを検索し、帳票を出力
 		byte[] output = OrderReporting2(params, fields);
-
-		logger.log(Level.INFO,"出力");
 		
 		// PDFのダウンロード
 		// バイナリファイルの型指定
