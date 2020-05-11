@@ -34,6 +34,8 @@ public class ProductController {
 
 	@Autowired
 	ResourceLoader resource;
+	@Autowired
+	ProductService service;
 	
 	@Autowired
 	@Qualifier("myfile")
@@ -53,9 +55,10 @@ public class ProductController {
 		params.put("Date_today", "令和2年4月24日");
 
 		// フィールドデータ作成
-		SampleProductDao dao = new SampleProductDao();
-		List<SampleProductModel> fields = dao.findByAll();
-
+		//SampleProductDao dao = new SampleProductDao();
+		//List<SampleProductModel> fields = dao.findByAll();
+		List<Product>fields = service.findAll();
+		
 		logger.log(Level.INFO,fields.toString());
 		
 		// データを検索し、帳票を出力
@@ -90,7 +93,7 @@ public class ProductController {
 	 * @param data　　Daoに格納済みの明細データ
 	 * @return　　　　　　バイナリファイル
 	 */
-	private byte[] OrderReporting2(HashMap<String, Object> param, List<SampleProductModel> data) {
+	private byte[] OrderReporting2(HashMap<String, Object> param, List<Product> data) {
 
 		// バイトを読み込む為のクラス
 		InputStream input;

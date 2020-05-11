@@ -1,17 +1,21 @@
 package com.tuyano.springboot;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 import lombok.Data;
 
-//　商品名、価格
 @Data
+@Entity
+@Table(name = "product")
 public class Product {
 
-	private String ProductName;
-	private int ProductPrice;
+	@Id
+	@Column(name = "name")
+    private String name;
 	
-	public Product(String name, int Price){
-		
-		this.ProductName = name;
-	    this.ProductPrice = Price;
-	}
+	@Column(name = "price")
+    private int price;
 }

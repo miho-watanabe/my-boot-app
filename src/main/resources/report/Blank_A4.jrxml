@@ -7,16 +7,16 @@
 	<queryString>
 		<![CDATA[]]>
 	</queryString>
-	<field name="product_name" class="java.lang.String"/>
+	<field name="name" class="java.lang.String"/>
 	<field name="price" class="java.lang.Integer"/>
 	<variable name="product_name1" class="java.lang.Integer" resetType="Page" calculation="Count">
-		<variableExpression><![CDATA[$F{product_name}]]></variableExpression>
+		<variableExpression><![CDATA[$F{name}]]></variableExpression>
 	</variable>
 	<variable name="price1" class="java.lang.Integer" resetType="Page" calculation="Count">
 		<variableExpression><![CDATA[$F{price}]]></variableExpression>
 	</variable>
 	<variable name="product_name2" class="java.lang.Integer" resetType="Page" calculation="DistinctCount">
-		<variableExpression><![CDATA[$F{product_name}]]></variableExpression>
+		<variableExpression><![CDATA[$F{name}]]></variableExpression>
 	</variable>
 	<variable name="price2" class="java.lang.Integer" resetType="Page" calculation="DistinctCount">
 		<variableExpression><![CDATA[$F{price}]]></variableExpression>
@@ -98,7 +98,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="IPAexg"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{product_name}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
 			</textField>
 			<textField pattern="¤#,##0.##;¤-#,##0.##">
 				<reportElement x="278" y="0" width="277" height="30" uuid="cf3b8336-b878-4ad5-94e7-1007b53b00c3">
