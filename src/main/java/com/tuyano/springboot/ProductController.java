@@ -48,6 +48,10 @@ public class ProductController {
 
 		HashMap<String, Object> params = new HashMap<String, Object>();
 
+		// ロガー
+		Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
+		logger.log(Level.INFO,"これはログのサンプルです");
+		logger.log(Level.INFO,"this is sample logs!");
 		// ヘッダーデータ作成
 		List<SalesforceDepartment>test = sfService.sfFindAll();
 		params.put("Client_name", test.get(0).getName());
