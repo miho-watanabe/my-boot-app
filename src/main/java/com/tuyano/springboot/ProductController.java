@@ -19,6 +19,7 @@ import org.springframework.core.io.ResourceLoader;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperCompileManager;
@@ -42,6 +43,17 @@ public class ProductController {
 	@Autowired
 	@Qualifier("myfile")
 	public String myfile;
+	
+	@RequestMapping(path = "/",method = RequestMethod.GET)
+    public String root() {
+		return "signin";
+    }
+	
+	@RequestMapping(path = "/",method = RequestMethod.POST)
+	    public String send(@RequestParam(name="email",required = false) String email,
+	    		           @RequestParam(name="password",required = false) String password) {
+		 return "invoice";
+	    }
 	
 	@RequestMapping(value = "/sample", method = RequestMethod.GET)
 	public String sample(HttpServletResponse response) {

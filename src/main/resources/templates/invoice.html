@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v4.0.1">
+    <title>Grid Template · Bootstrap</title>
+
+    <link rel="canonical" th:href="@{/webjars/bootstrap/4.5/examples/grid/}">
+
+     <!-- Bootstrap core CSS -->
+	<link rel="stylesheet" th:href="@{webjars/bootstrap/4.3.1/css/bootstrap.css}"/>
+  	<script th:src="@{webjars/jquery/3.4.1/jquery.min.js}"></script>
+	<script th:src="@{webjars/bootstrap/4.3.1/js/bootstrap.min.js}"></script>
+
+	<!--<link th:href="@{/webjars/bootstrap/4.5/css/bootstrap.css}" rel="stylesheet">-->
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+		.themed-grid-col {
+		  padding-top: 15px;
+		  padding-bottom: 15px;
+		  background-color: rgba(86, 61, 124, .15);
+		  border: 1px solid rgba(86, 61, 124, .2);
+		}
+		
+		.themed-container {
+		  padding: 15px;
+		  margin-bottom: 30px;
+		  background-color: rgba(0, 123, 255, .15);
+		  border: 1px solid rgba(0, 123, 255, .2);
+		}
+		
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+    <!-- Custom styles for this template -->
+    <link href="grid.css" rel="stylesheet">
+  </head>
+<title>Insert title here</title>
+<body>
+<body class="py-4">
+  <div class="container">
+  	<h1>請求書一覧</h1>
+<!--   	   <div class="row mb-3">
+		    <div class="col-sm-1 themed-grid-col">No</div>
+		    <div class="col-sm-4 themed-grid-col">請求書名</div>
+		    <div class="col-sm-2 themed-grid-col">請求日</div>
+		    <div class="col-sm-3 themed-grid-col">請求金額</div>
+		    <div class="col-sm-2 themed-grid-col">ダウンロード</div>
+		</div> -->
+		
+		<table class="table table-bordered">
+		  <thead>
+		    <tr class="table-info">
+		      <th scope="col">#</th>
+		      <th scope="col">請求書名</th>
+		      <th scope="col">請求日</th>
+		      <th scope="col">請求金額</th>
+		      <th scope="col">ダウンロード</th>
+		    </tr>
+		  </thead>
+		  <tbody>
+		    <tr>
+		      <th scope="row">1</th>
+		      <td>項目１</td>
+		      <td>項目２</td>
+		      <td>項目３</td>
+		      <td>項目４</td>
+		    </tr>
+		    <tr>
+		      <th scope="row">2</th>
+		      <td>項目６</td>
+		      <td>項目７</td>
+		      <td>項目８</td>
+		      <td>項目９</td>
+		    </tr>
+		  </tbody>
+		</table>
+  </div>
+
+</body>
+</html>
