@@ -28,7 +28,7 @@
 			<plugin>
 		        <groupId>org.apache.maven.plugins</groupId>
 		        <artifactId>maven-dependency-plugin</artifactId>
-		        <version>3.0.2</version>
+<!-- 		        <version>3.1.2</version>
 		        <executions>
 		          <execution>
 		            <id>unpack-newrelic</id>
@@ -46,7 +46,7 @@
 		              <destFileName>newrelic</destFileName>
 		            </configuration>
 		          </execution>
-		        </executions>
+		        </executions> -->
 		    </plugin>
 		</plugins>
 	</build>
