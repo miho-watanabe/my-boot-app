@@ -91,7 +91,17 @@ public class ProductController {
 		mav.addObject("data",serchData);
 		return mav;
 	}
-    						
+    
+	/**
+	 * メールテンプレートページへ遷移
+	 * @param mav
+	 * @return
+	 */
+	@RequestMapping(path = "/mailTemplate",method = RequestMethod.GET)
+    public ModelAndView send(ModelAndView mav) {
+		mav.setViewName("mailTemplate");
+		return mav;
+	}
 	
 	/**
 	 * PDFの出力
