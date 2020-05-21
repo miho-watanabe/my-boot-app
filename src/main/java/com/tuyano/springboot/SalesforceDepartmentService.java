@@ -1,6 +1,7 @@
 package com.tuyano.springboot;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,4 +17,11 @@ public class SalesforceDepartmentService {
 	  public List<SalesforceDepartment> sfFindAll(){
 		  return salesforceRepository.findAll();
 	  }
+	  
+	  
+	  public List<SalesforceDepartment> findById(int id)
+	  {  
+		return salesforceRepository.findById(id);
+	  }
+	  
 }
