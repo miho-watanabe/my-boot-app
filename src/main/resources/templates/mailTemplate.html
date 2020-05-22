@@ -6,7 +6,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Jekyll v4.0.1">
-    <title>Sticky Footer Navbar Template · Bootstrap</title>
+    <title>Mail Template</title>
 
     <!--<link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/sticky-footer-navbar/"> -->
 	<link rel="canonical" th:href="@{webjars/bootstrap/4.5/examples/sticky-footer-navbar/}">
@@ -59,10 +59,10 @@
 <!-- Begin page content -->
 <main role="main" class="flex-shrink-0" style="margin-top:6rem;">
   <div class="container">
-    <p class="lead">ご請求書を送付致します。</p>
-    <p class="lead">以下のURLよりダウンロードして頂き、</p>
-    <p class="lead">ご査収ください。</p>
-    <p class="lead">https://XXX</p>
+    <p class="lead" th:text="#{mailTemplate1}"></p>
+    <p class="lead" th:text="#{mailTemplate2}"></p>
+    <p class="lead" th:text="#{mailTemplate3}"></p>
+    <p class="lead" th:text="#{mailTemplate4}"></p>
   </div>
 </main>
 
