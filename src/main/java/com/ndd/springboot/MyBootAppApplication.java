@@ -1,4 +1,4 @@
-package com.tuyano.springboot;
+package com.ndd.springboot;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

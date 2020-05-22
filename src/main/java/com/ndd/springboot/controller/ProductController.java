@@ -1,4 +1,4 @@
-package com.tuyano.springboot;
+package com.ndd.springboot.controller;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -17,6 +17,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.ndd.springboot.model.Product;
+import com.ndd.springboot.model.SalesforceDepartment;
+import com.ndd.springboot.service.ProductService;
+import com.ndd.springboot.service.SalesforceDepartmentService;
 
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperCompileManager;
@@ -59,24 +64,36 @@ public class ProductController {
     }
 	
 	/**
-	 * 請求書一覧画面を表示
+	 * 請求書一覧画面を表示(POST用)
 	 * @param mav
 	 * @param email
 	 * @param password
 	 * @return 請求書一覧ページ
 	 */
-	@RequestMapping(path = "/",method = RequestMethod.POST)
-	    public ModelAndView send(ModelAndView mav,
+	@RequestMapping(path = "/list",method = RequestMethod.POST)
+	    public ModelAndView sendInvoice(ModelAndView mav,
 	    						@RequestParam(name="email",required = false) String email,
 	    						@RequestParam(name="password",required = false) String password) {
 		
 		mav.setViewName("invoice");
-		// ヘッダーデータ作成
 		List<SalesforceDepartment> data = sfService.sfFindAll();
 		mav.addObject("data",data);
 		return mav;
 	    }
-
+	
+	/***
+	 * 請求書一覧画面を表示(GET用)
+	 * @param mav
+	 * @return 請求書一覧ページ
+	 */
+	@RequestMapping(path = "/list",method = RequestMethod.GET)
+    public ModelAndView getInvoice(ModelAndView mav) {
+		mav.setViewName("invoice");
+		List<SalesforceDepartment> data = sfService.sfFindAll();
+		mav.addObject("data",data);
+		return mav;		
+	}
+	
 	/**
 	 * 検索処理
 	 * @param mav
@@ -97,7 +114,7 @@ public class ProductController {
 	 * @param mav
 	 * @return
 	 */
-	@RequestMapping(path = "/mailTemplate",method = RequestMethod.GET)
+	@RequestMapping(path = "/sendMail",method = RequestMethod.GET)
     public ModelAndView send(ModelAndView mav) {
 		mav.setViewName("mailTemplate");
 		return mav;

@@ -1,4 +1,4 @@
-package com.tuyano.springboot;
+package com.ndd.springboot;
 
 import java.io.IOException;
 import java.io.InputStream;
