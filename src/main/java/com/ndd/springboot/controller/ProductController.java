@@ -18,8 +18,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.ndd.springboot.model.DemoInvoice;
 import com.ndd.springboot.model.Product;
 import com.ndd.springboot.model.SalesforceDepartment;
+import com.ndd.springboot.service.DemoInvoiceService;
 import com.ndd.springboot.service.ProductService;
 import com.ndd.springboot.service.SalesforceDepartmentService;
 
@@ -47,6 +49,8 @@ public class ProductController {
 	ProductService service;
 	@Autowired
 	SalesforceDepartmentService sfService;
+	@Autowired
+	DemoInvoiceService demoService;
 	
 	@Autowired
 	@Qualifier("myfile")
@@ -76,7 +80,10 @@ public class ProductController {
 	    						@RequestParam(name="password",required = false) String password) {
 		
 		mav.setViewName("invoice");
-		List<SalesforceDepartment> data = sfService.sfFindAll();
+		
+		List<DemoInvoice> data = demoService.findAll();
+		//HerokuConnectで同期をとる場合は↓を実装
+		//List<SalesforceDepartment> data = sfService.sfFindAll();
 		mav.addObject("data",data);
 		return mav;
 	    }

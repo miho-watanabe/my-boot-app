@@ -26,13 +26,18 @@
 	</background>
 	<title>
 		<band height="88" splitType="Stretch">
-			<textField>
-				<reportElement x="200" y="0" width="162" height="30" uuid="24c14a3c-d342-4c3e-a091-f476202a2806"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA["商品一覧表"]]></textFieldExpression>
-			</textField>
+			<staticText>
+				<reportElement x="227" y="10" width="100" height="30" uuid="956f143e-a29e-4c5a-ba58-637c3bc6a04a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="IPAexg" size="24"/>
+				</textElement>
+				<text><![CDATA[請求書]]></text>
+			</staticText>
 			<textField>
 				<reportElement x="10" y="50" width="190" height="30" uuid="80d7784c-882f-462f-bb52-9f79859c0496"/>
+				<box>
+					<bottomPen lineWidth="1.0"/>
+				</box>
 				<textElement>
 					<font fontName="IPAexg"/>
 				</textElement>
@@ -45,6 +50,13 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$P{Date_today}]]></textFieldExpression>
 			</textField>
+			<staticText>
+				<reportElement x="200" y="70" width="50" height="10" uuid="17a7a4c2-5e0a-4139-8c35-d59439e60498"/>
+				<textElement>
+					<font fontName="IPAexg"/>
+				</textElement>
+				<text><![CDATA[御中]]></text>
+			</staticText>
 		</band>
 	</title>
 	<pageHeader>

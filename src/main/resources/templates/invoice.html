@@ -86,6 +86,8 @@
 	    <thead>
 	      <tr>
 	        <th>#</th>
+	        <th>契約番号</th>
+	        <th>取引先名</th>
 	        <th>請求書名</th>
 	        <th>請求日</th>
 	        <th>請求金額</th>
@@ -93,12 +95,14 @@
 	      </tr>
 	    </thead>
 	    <tbody>
-	      <tr th:each="obj:${data}">
-	        <td>1</td>
-	        <td th:text="${obj.id}"></td>
-	        <td th:text="${obj.sfid}"></td>
-	        <td th:text="${obj.name}"></td>
-<!-- 	        <td><i class="fas fa-download"></i></td> -->
+	     <tr th:each="obj:${data}">
+	        <td th:text="${objStat.count}"></td>
+	        <td th:text="${obj.budgetId}"></td>
+	        <td th:text="${obj.accountName}"></td>
+	        <td th:text="${obj.invoiceName}"></td>
+	        <td th:text="${obj.invoiceYm}"></td>
+	        <td th:text="${#numbers.formatInteger(obj.invoiceAmount, 3, 'COMMA')}"></td>
+	        <!-- 	        <td><i class="fas fa-download"></i></td> -->
 	        <td><button type="submit" class="btn"><i class="fas fa-download"></i></button></td>
 	      </tr>
 	    </tbody>
