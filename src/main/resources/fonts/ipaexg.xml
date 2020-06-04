@@ -5,4 +5,14 @@
     <pdfEncoding>Identity-H</pdfEncoding>
     <pdfEmbedded>true</pdfEmbedded>
   </fontFamily>
+  <fontFamily name="IPA明朝">
+        <normal>fonts/ipam.ttf</normal>
+        <pdfEncoding>Identity-H</pdfEncoding>
+        <pdfEmbedded>true</pdfEmbedded>
+  </fontFamily>
+    <fontFamily name="IPA P明朝">
+        <normal>fonts/ipamp.ttf</normal>
+        <pdfEncoding>Identity-H</pdfEncoding>
+        <pdfEmbedded>true</pdfEmbedded>
+  </fontFamily>
 </fontFamilies>

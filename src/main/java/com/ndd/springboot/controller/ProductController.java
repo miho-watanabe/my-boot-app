@@ -143,7 +143,8 @@ public class ProductController {
 		logger.log(Level.INFO,"this is sample logs!");
 		// ヘッダーデータ作成
 		List<SalesforceDepartment>test = sfService.sfFindAll();
-		params.put("Client_name", test.get(0).getName());
+		params.put("Client_name", "株式会社AAA");
+		//params.put("Client_name", test.get(0).getName());
 		params.put("Date_today", "令和2年4月24日");
 		
 		// フィールドデータ作成
