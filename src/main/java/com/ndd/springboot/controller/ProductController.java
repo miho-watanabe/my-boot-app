@@ -150,6 +150,13 @@ public class ProductController {
 		// フィールドデータ作成
 		List<Product>fields = service.findAll();
 		
+		for(int i = 0; i<= 8; i++) {
+			Product demo = new Product();
+			demo.setName(null);
+			demo.setPrice(null);
+			fields.add(demo);		
+		}
+		
 		// データを検索し、帳票を出力
 		byte[] output = OrderReporting2(params, fields);
 		
