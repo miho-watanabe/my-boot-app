@@ -81,7 +81,7 @@
 </header>
 
 	<div class="container">
-	  <form th:action="@{/sample}" method="post">   
+ 
 	  <table class="table table-condensed">
 	    <thead>
 	      <tr>
@@ -103,11 +103,16 @@
 	        <td th:text="${obj.invoiceYm}"></td>
 	        <td th:text="${#numbers.formatInteger(obj.invoiceAmount, 3, 'COMMA')}"></td>
 	        <!-- 	        <td><i class="fas fa-download"></i></td> -->
-	        <td><button type="submit" class="btn"><i class="fas fa-download"></i></button></td>
+	        <td>
+	          <form th:action="@{/sample}" method="post"> 
+	        <button type="submit" class="btn"><i class="fas fa-download"></i></button>
+	          <input type="hidden" name="budgetId" th:value="${obj.budgetId}">
+	          </form>
+	        </td>
 	      </tr>
 	    </tbody>
 	  </table>
-	  </form>
+	  
 	</div>
 </body>
 </html>

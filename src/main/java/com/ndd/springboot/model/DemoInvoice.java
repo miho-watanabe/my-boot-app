@@ -23,13 +23,25 @@ public class DemoInvoice {
     private String accountName;
 	
 	@Column(name = "invoice_amount")
-    private int invoiceAmount;
+    private Integer invoiceAmount;
+	
+	@Column(name = "invoice_amount_tax")
+    private Integer invoiceAmountTax;
+
+	@Column(name = "invoice_statement_amout1")
+    private Integer InvoiceStatementAmout1;
+
+	@Column(name = "invoice_statement_amout2")
+    private Integer InvoiceStatementAmout2;
 	
 	@Column(name = "invoice_date")
     private Date invoiceDate;
 	
 	@Column(name = "invoice_statement")
     private String invoiceStatement;
+	
+	@Column(name = "invoice_statement2")
+    private String invoiceStatement2;
 	
 	@Column(name = "invoice_status")
     private String invoiceStatus;
@@ -42,4 +54,8 @@ public class DemoInvoice {
 	
 	@Column(name = "invoice_ym")
     private String invoiceYm;
+	
+	@Column(name = "invoice_date_japan")
+    private String invoiceDateJapan;
+		
 }

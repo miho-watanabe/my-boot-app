@@ -8,10 +8,12 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -102,9 +104,9 @@ public class ProductController {
 	@RequestMapping(path = "/list",method = RequestMethod.GET)
     public ModelAndView getInvoice(ModelAndView mav) {
 		mav.setViewName("invoice");
-		List<SalesforceDepartment> data = sfService.sfFindAll();
+		List<DemoInvoice> data = demoService.findAll();
 		mav.addObject("data",data);
-		return mav;		
+		return mav;
 	}
 	
 	/**
@@ -139,7 +141,8 @@ public class ProductController {
 	 * @return
 	 */
 	@RequestMapping(value = "/sample", method = RequestMethod.POST)
-	public String sample(HttpServletResponse response) {
+	public String sample(HttpServletResponse response,
+			@RequestParam(name="budgetId",required = false) String budgetId) {
 
 		HashMap<String, Object> params = new HashMap<String, Object>();
 
@@ -147,11 +150,12 @@ public class ProductController {
 		Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 		logger.log(Level.INFO,"これはログのサンプルです");
 		logger.log(Level.INFO,"this is sample logs!");
+
 		// ヘッダーデータ作成
-		List<SalesforceDepartment>test = sfService.sfFindAll();
-		params.put("Client_name", "株式会社AAA");
-		//params.put("Client_name", test.get(0).getName());
-		params.put("Date_today", "令和2年4月24日");
+		List<DemoInvoice>demodata = demoService.findByBudgetId(budgetId);
+		
+		params.put("Client_name", demodata.get(0).getAccountName());
+		params.put("Date_today", demodata.get(0).getInvoiceDateJapan());
 	    	
 		// 画像を取得
 		InputStream img =null;
