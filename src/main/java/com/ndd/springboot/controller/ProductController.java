@@ -1,11 +1,17 @@
 package com.ndd.springboot.controller;
 
 import java.io.ByteArrayInputStream;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -146,11 +152,27 @@ public class ProductController {
 		params.put("Client_name", "株式会社AAA");
 		//params.put("Client_name", test.get(0).getName());
 		params.put("Date_today", "令和2年4月24日");
+	    	
+		// 画像を取得
+		InputStream img =null;
+		
+		try {
+			img = new FileInputStream(resource.getResource("classpath:stamp/nddStamp.png").getFile());
+		} catch (FileNotFoundException e1) {
+			// TODO 自動生成された catch ブロック
+			e1.printStackTrace();
+		} catch (IOException e1) {
+			// TODO 自動生成された catch ブロック
+			e1.printStackTrace();
+		}
+		
+		params.put("nddStamp", img);
 		
 		// フィールドデータ作成
 		List<Product>fields = service.findAll();
 		
-		for(int i = 0; i<= 8; i++) {
+		//空のデータ作成
+		for(int i = 0; i<= 11; i++) {
 			Product demo = new Product();
 			demo.setName(null);
 			demo.setPrice(null);

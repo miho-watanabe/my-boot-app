@@ -14,7 +14,8 @@ import org.springframework.util.StreamUtils;
 @Configuration
 public class ResourceFiles {
 	
-	@Value("classpath:report/Blank_A4.jrxml")
+	@Value("classpath:report/invoice.jrxml")
+	//@Value("classpath:report/Blank_A4.jrxml")
 	private Resource myfile;
 	
 	@Bean(name = "myfile")
