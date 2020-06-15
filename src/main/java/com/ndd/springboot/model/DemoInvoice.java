@@ -57,5 +57,8 @@ public class DemoInvoice {
 	
 	@Column(name = "invoice_date_japan")
     private String invoiceDateJapan;
+	
+	@Column(name = "invoice_update_user")
+    private String invoiceUpdateUser;
 		
 }

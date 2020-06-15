@@ -6,14 +6,9 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Locale;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -27,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ndd.springboot.model.DemoInvoice;
+import com.ndd.springboot.model.InvoiceStatement;
 import com.ndd.springboot.model.Product;
 import com.ndd.springboot.model.SalesforceDepartment;
 import com.ndd.springboot.service.DemoInvoiceService;
@@ -156,12 +152,13 @@ public class ProductController {
 		
 		params.put("Client_name", demodata.get(0).getAccountName());
 		params.put("Date_today", demodata.get(0).getInvoiceDateJapan());
-	    	
-		// 画像を取得
-		InputStream img =null;
+	    params.put("Amount_total", demodata.get(0).getInvoiceAmountTax());
+		
+		// 社判画像を取得
+		InputStream nddImg =null;
 		
 		try {
-			img = new FileInputStream(resource.getResource("classpath:stamp/nddStamp.png").getFile());
+			nddImg = new FileInputStream(resource.getResource("classpath:stamp/nddStamp.png").getFile());
 		} catch (FileNotFoundException e1) {
 			// TODO 自動生成された catch ブロック
 			e1.printStackTrace();
@@ -170,21 +167,44 @@ public class ProductController {
 			e1.printStackTrace();
 		}
 		
-		params.put("nddStamp", img);
+		params.put("nddStamp", nddImg);
+		
+		
+		// ロゴ画像を取得
+		InputStream nddLogo =null;
+		
+		try {
+			nddLogo = new FileInputStream(resource.getResource("classpath:stamp/nddLogo.png").getFile());
+		} catch (FileNotFoundException e1) {
+			// TODO 自動生成された catch ブロック
+			e1.printStackTrace();
+		} catch (IOException e1) {
+			// TODO 自動生成された catch ブロック
+			e1.printStackTrace();
+		}
+		
+		params.put("nddLogo", nddLogo);
+		
 		
 		// フィールドデータ作成
-		List<Product>fields = service.findAll();
+		// List<Product>fields = service.findAll();
+		
+		//明細行の設定
+		List<InvoiceStatement> demoStatement = new ArrayList<InvoiceStatement>();
+		demoStatement.add(new InvoiceStatement(demodata.get(0).getInvoiceStatement(),demodata.get(0).getInvoiceStatementAmout1()));
+		demoStatement.add(new InvoiceStatement(demodata.get(0).getInvoiceStatement2(), demodata.get(0).getInvoiceStatementAmout2()));
 		
 		//空のデータ作成
 		for(int i = 0; i<= 11; i++) {
-			Product demo = new Product();
-			demo.setName(null);
-			demo.setPrice(null);
-			fields.add(demo);		
+			demoStatement.add(new InvoiceStatement(null,null));
+			/*
+			 * Product demo = new Product(); demo.setName(null); demo.setPrice(null);
+			 * fields.add(demo);
+			 */
 		}
 		
 		// データを検索し、帳票を出力
-		byte[] output = OrderReporting2(params, fields);
+		byte[] output = OrderReporting2(params, demoStatement);
 		
 		// PDFのダウンロード
 		// バイナリファイルの型指定
@@ -213,7 +233,7 @@ public class ProductController {
 	 * @param data　　Daoに格納済みの明細データ
 	 * @return　　　　　　バイナリファイル
 	 */
-	private byte[] OrderReporting2(HashMap<String, Object> param, List<Product> data) {
+	private byte[] OrderReporting2(HashMap<String, Object> param, List<InvoiceStatement> data) {
 		
 		try {
 			// 帳票ファイルを取得

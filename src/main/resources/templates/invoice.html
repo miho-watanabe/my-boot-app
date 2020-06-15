@@ -71,10 +71,10 @@
       </ul>
       <form th:action="@{/search}" method="post" class="form-inline mt-2 mt-md-0">
         <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" name="txtSearch">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit" name="search">Search</button>
+        <button class="btn btn-outline-primary my-2 my-sm-0" type="submit" name="search">Search</button>
       </form>
       <form class="form-inline mt-2 mt-md-0">
-         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Sign out</button>
+         <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Sign out</button>
       </form>
     </div>
   </nav>
@@ -91,19 +91,21 @@
 	        <th>請求書名</th>
 	        <th>請求日</th>
 	        <th>請求金額</th>
+	        <th>更新者</th>
 	        <th>ダウンロード</th>
 	      </tr>
 	    </thead>
 	    <tbody>
 	     <tr th:each="obj:${data}">
-	        <td th:text="${objStat.count}"></td>
-	        <td th:text="${obj.budgetId}"></td>
-	        <td th:text="${obj.accountName}"></td>
-	        <td th:text="${obj.invoiceName}"></td>
-	        <td th:text="${obj.invoiceYm}"></td>
-	        <td th:text="${#numbers.formatInteger(obj.invoiceAmount, 3, 'COMMA')}"></td>
+	        <td class="align-middle" th:text="${objStat.count}"></td>
+	        <td class="align-middle" th:text="${obj.budgetId}"></td>
+	        <td class="align-middle" th:text="${obj.accountName}"></td>
+	        <td class="align-middle" th:text="${obj.invoiceName}"></td>
+	        <td class="align-middle" th:text= "${obj.invoiceYm}"></td>
+	        <td class="align-middle text-right" th:text="${#numbers.formatInteger(obj.invoiceAmountTax, 3, 'COMMA')}"></td>
 	        <!-- 	        <td><i class="fas fa-download"></i></td> -->
-	        <td>
+	        <td class="align-middle" th:text="${obj.invoiceUpdateUser}"></td>
+	        <td class="align-middle text-center">
 	          <form th:action="@{/sample}" method="post"> 
 	        <button type="submit" class="btn"><i class="fas fa-download"></i></button>
 	          <input type="hidden" name="budgetId" th:value="${obj.budgetId}">
